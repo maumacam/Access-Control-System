@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        .card h3 {
+            color: #333;
+            font-size: 22px;
+        }
+        .card p {
+            color: #777;
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Profile</h2>
+        <div class="card">
+            <h3>Your Profile Details</h3>
+            <p>Username: JohnDoe</p>
+            <p>Email: johndoe@example.com</p>
+        </div>
+        <div class="card">
+            <h3>Update Profile</h3>
+            <form action="/update_profile" method="POST">
+                <input type="text" name="username" placeholder="New Username" required>
+                <input type="email" name="email" placeholder="New Email" required>
+                <input type="password" name="password" placeholder="New Password" required>
+                <input type="submit" value="Update Profile">
+            </form>
+        </div>
+        <div class="footer">
+            <p><a href="/logout">Logout</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

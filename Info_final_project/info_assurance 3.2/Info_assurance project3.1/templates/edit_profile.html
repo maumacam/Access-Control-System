@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('/static/2.jpg') no-repeat center center fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.474);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+        .container h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #7b68ee;
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #6a5acd;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Edit Profile</h2>
+        <form action="/edit-profile" method="POST" enctype="multipart/form-data">
+            <input type="text" name="username" placeholder="Username" value="{{ current_user.username }}" required>
+            <input type="email" name="email" placeholder="Email" value="{{ current_user.email }}" required>
+            <input type="password" name="password" placeholder="Password">
+            
+            <!-- Profile picture display if it exists -->
+            {% if current_user.profile_picture %}
+                <img src="{{ url_for('static', filename='uploads/' + current_user.profile_picture.split('/')[-1]) }}" alt="Profile Picture">
+            {% endif %}
+            
+            <input type="file" name="profile_picture" accept="image/*">
+            <input type="submit" value="Update Profile">
+        </form>
+    </div>
+
+</body>
+</html>
